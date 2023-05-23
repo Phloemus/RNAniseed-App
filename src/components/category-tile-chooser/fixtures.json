@@ -1,0 +1,14 @@
+[
+    {
+        "title": "Exploration",
+        "to": "/explore"
+    },
+    {
+        "title": "Comparison",
+        "to": "/compare"
+    },
+    {
+        "title": "Other",
+        "to": "/other"
+    }
+]
