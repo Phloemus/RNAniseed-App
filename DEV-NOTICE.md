@@ -3,6 +3,42 @@
 The RNAniseed project has started in **march 2023**. The initial codebase uses **React JS** and 
 retrive data from the **RNAniseed API**.
 
+As a new developper on the project, reading this developper notice will help you understand the 
+project, the goals, the choices made during development and guide you in your journey as a 
+RNAniseed developper.
+
+## Some background
+
+RNAniseed is a project which allow the ascidian community to visualize single cell RNA seq data 
+from datasets uploaded by the community. The ascidian community is not used to explore large 
+datasets and lack the expertise to do so on their own using tools like R, python or CellxGene.
+
+The main goal of RNAniseed is to offer a simple interface allowing the biologist to select a 
+dataset, filter the data he is interested in and propose a visual map of selected data 
+automatically.
+
+As single cell RNA seq data is not currently used a lot by the ascidian community, the role of 
+the RNAniseed application is still to be defined but the biology expertise about the use of 
+single cell RNA seq data tends to imply an interest for two types of uses:
+
+1. **Dataset Exploration** : Exploring large single cell RNA seq datasets is often a pain when 
+                             the team lack the expertise in bio-informatics. RNAniseed is here 
+                             to propose a simple visualization solution to explore the ascidian 
+                             datasets. Tools developped to help the exploration of the datasets
+                             can be laveraged by the biologist to find intersting details or 
+                             new research subjects to investigate in.
+
+2. **Datasets Comparison** : Comparing two datasets requires statistics a good expertise in 
+                             bio-informatics. Comparing datasets is still very important 
+                             for the ascidian community and their reseach topics. RNAniseed is 
+                             here to lower the barrier to entry and allow biologists to have an 
+                             access to a simple set of comparison tools.
+
+One demand of the community is to develop a simple to use tool. This should be taken in consideration
+for the UI and during the development of the functionnalities. Opting for an AGILE method and gathering
+feedback when new fonctionnalities are in their pre-production stage is a great way to verify that 
+the feature fit the need of the ascidian community.
+
 ## Technologies behind
 
 RNAniseed uses multiple mature technologies that you should be familiar with in order to understand
