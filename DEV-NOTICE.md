@@ -35,9 +35,9 @@ single cell RNA seq data tends to imply an interest for two types of uses:
                              access to a simple set of comparison tools.
 
 One demand of the community is to develop a simple to use tool. This should be taken in consideration
-for the UI and during the development of the functionnalities. Opting for an AGILE method and gathering
+for the UI and during the development of every features. Opting for an AGILE method by gathering
 feedback when new fonctionnalities are in their pre-production stage is a great way to verify that 
-the feature fit the need of the ascidian community.
+the feature fits the need of the ascidian community.
 
 ## Technologies behind
 
@@ -124,8 +124,24 @@ The main code of the app is the **/src** folder
                 Every page have a specific URL except for very close pages that can't share
                 the same URL. But in general : 1 URL = 1 page. (see page creation manual)
 
-# Developper 
+## Launching locally
 
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+The style of the application automatically updates when the files are saved
+
+## Deployment
+
+### Switching to Production Mode
+
+### Building the React App
+
+### Adding the App to the production server
 
 
 ## Developper Contributors
