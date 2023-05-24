@@ -340,7 +340,7 @@ const ExplorationLayer = ({ onLaunchWaiting }) => {
                     <button 
                         className={`
                             px-6 py-2 
-                            ${selectedSpecie != null && selectedDataset != null ? 'bg-sky-500' : 'bg-slate-400'} 
+                            ${selectedSpecie != null && selectedDataset != null ? 'bg-green-500' : 'bg-slate-400'} 
                             text-white rounded-md
                         `}
                         onClick={() => { onLaunchWaiting(); launchVisualization() }}

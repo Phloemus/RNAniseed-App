@@ -15,7 +15,7 @@ const Navbar = () => {
                     <li className="hover:underline"><Link to="/explore">Explore</Link></li>
                     <li className="hover:underline"><Link to="/compare">Compare</Link></li>
                 </ul>
-                <button className="px-4 py-2 bg-sky-500 text-white text-sm rounded-md hover:shadow-md">Connection</button>
+                <button className="px-4 py-2 bg-green-500 text-white text-sm rounded-md hover:shadow-md">Connection</button>
             </div>
         </nav>
     )

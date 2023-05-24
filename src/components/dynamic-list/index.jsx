@@ -21,9 +21,9 @@ const ListItem = ({item, isSelected, onActivate}) => {
         <>
             <li onClick={() => {onActivate(item.id)}}>
                 <div className={`
-                                ${isSelected ? 'bg-sky-500' : 'bg-white'}
+                                ${isSelected ? 'bg-green-500' : 'bg-white'}
                                 px-4 py-3 my-1
-                                ${!isSelected ? 'hover:bg-sky-200' : ''}
+                                ${!isSelected ? 'hover:bg-green-200' : ''}
                                 rounded-md
                                 shadow-sm
                                 hover:cursor-pointer

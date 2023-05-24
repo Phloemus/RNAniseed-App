@@ -10,7 +10,7 @@ import Navbar from "../../components/navbar"
 import ExplorationLayer from './explorationLayer'
 import ComparisonLayer from './comparisonLayer'
 import CategoryTileChooser from '../../components/category-tile-chooser'
-import { WaitingPanel } from "./components/panels"
+import { WaitingPanel } from "./components/panels/waiting-panel"
 
 
 

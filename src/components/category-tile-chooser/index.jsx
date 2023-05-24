@@ -31,12 +31,12 @@ const CategoryTileChooser = ({ items, activeId }) => {
                         className={`
                             p-2 
                             flex-1 flex justify-center 
-                            ${ activeId == id ? 'bg-sky-500' : 'bg-sky-200'} 
+                            ${ activeId == id ? 'bg-green-500' : 'bg-green-200'} 
                             rounded-lg hover:cursor-pointer
                     `}>
                         <h3 className={`
                             mx-auto text-md 
-                            ${ activeId == id ? 'text-white' : 'text-sky-500'}
+                            ${ activeId == id ? 'text-white' : 'text-green-500'}
                         `}>
                             {item.title}
                         </h3>

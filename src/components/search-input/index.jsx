@@ -58,7 +58,7 @@ const SearchInput = ({placeholder = 'Chercher', name, onChangeQuery}) => {
                             dark:border-slate-900
                             rounded-md py-2 pl-9 pr-3
                             shadow-sm focus:outline-none
-                            focus:border-sky-500 focus:ring-sky-500
+                            focus:border-green-500 focus:ring-green-500
                             focus:ring-1
                             dark:focus:ring-2
                             text-sm" 

@@ -73,7 +73,7 @@ export const WaitingPanel = ({show, onQuit}) => {
                 <div className='my-2'>
                     <div className='w-full bg-slate-200 rounded-full'>
                         <div 
-                            className='p-1 w-full bg-sky-500 rounded-full ease-linear'
+                            className='p-1 w-full bg-green-500 rounded-full ease-linear'
                             style={{width: `${loadingPercentage}%`, transition: 'width 1s'}}
                         ></div>
                     </div>
