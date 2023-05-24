@@ -1,9 +1,28 @@
 # Developper Notice
 
-The RNAniseed project has started in march 2023. The initial codebase uses React JS and 
-retrive data from the RNAniseed API.
+The RNAniseed project has started in **march 2023**. The initial codebase uses **React JS** and 
+retrive data from the **RNAniseed API**.
 
-## Simple, Elegant, Documented
+## Technologies behind
+
+RNAniseed uses multiple mature technologies that you should be familiar with in order to understand
+the codebase correctly. If you are not quite familiar with those 
+technologies, it's clearly worth taking the time learning them because following our coding 
+principles require a good knowledge of the technologies used underneeth.
+
+1. **React JS** : React JS is a minimalist Javascript framework adapted for reactive single page 
+                  applications. It's a very flexible, mature and widely used framework. As such
+                  with a wide ecosystem of libraries, React JS was the best choice to design the 
+                  User Interface (UI) of RNAniseed. React JS documentation **(https://react.dev/)**
+
+2. **Tailwind CSS** : Tailwind CSS is a tool that helps to style the Application in a minimalist
+                      and simple manner. Like bootstrap, Tailwind CSS propose simple CSS classes 
+                      to add style to any html element within the Application. Tailwind CSS is very 
+                      flexible, giving full control of the style of the UI. 
+                      Tailwind CSS documentation **(https://tailwindcss.com/docs/installation)**
+
+
+## The principles: Simple, Elegant, Documented
 
 For any project, the structure is the key to scalability and further growth. The 
 development of the RNAniseed project has 3 fondamental pillars : 
@@ -11,34 +30,37 @@ development of the RNAniseed project has 3 fondamental pillars :
 1. **Simple** : The code should be easy to understand. Any piece of code should 
                 be written to be understood later by a developper who doesn't
                 know the codebase. Components should be concise, states should 
-                have explicit names and only the wheel shouldn't be reinvented
-                when a JS function already does the job. Simplicity is all 
-                about making sure the code is as concise as possible, including
-                not over-ingeneer simple function.
+                have explicit names and the wheel shouldn't be reinvented
+                when a **JS function** already does the job well enough. **Simplicity** is all 
+                about making sure the code is as concise as possible, preventing
+                over-ingeneering simple functions.
 
 2. **Elegant** : RNAniseed should have an elegant codebase. In some way, an 
                  elegant code is linked to the **Simple** principle because 
                  an elegant codebase is often easier to read.
                  As such the **Elegant** principle is the opposite of a dirty
-                 code. An elegant code should have well named variables, consitent
+                 code. An **Elegant** code should have well named variables, consitent
                  typing, should place the logic of a component in an expected 
-                 order. In a few words : Elegant is the principle you have to 
-                 keep in mind when you just make a quick fix. Instead be elegant
+                 order. In a few words : **Elegant** is the principle you have to 
+                 keep in mind when you just make a quick fix. Instead be **Elegant**
                  and take your time to build a stable solution. 
 
-3. **Documented** : The code should be well documented in order to be verify that
+3. **Documented** : The code should be well **documented** in order to be verify that
                     a component have a single responsibility and making sure any 
-                    additional fonctionnality fall in the scope of responsability 
-                    of the component. Documented blocs should be added to precise 
+                    additional fonctionnality fall in the scope its responsability.
+                    Documented blocs should be added to precise 
                     the role of every state (indicated by **@state** in the doc) 
                     and the effect of every function within a component. There is 
                     a lot of rules about how to document the project within the 
                     codebase but keep the **Simple** principle in mind : only 
-                    write documentation on top of the thing you are describing in 
+                    write documentation above the thing you are describing in 
                     a concise way.
 
-## General structure
- 
+These principles will follow your journey all along. You can write small tests and break the 
+code as much as you need to but always keep you bench clean at the end of your coding session. 
+For every small improvement you make in the codebase make sure it's **simple**, **elegant** and **documented** before linking it to the rest of the project. 
+
+Push only **Simple**, **Elegant** and **Documented** components to the codebase
 
 ## File structure
 
