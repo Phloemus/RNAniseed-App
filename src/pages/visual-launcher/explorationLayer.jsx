@@ -328,8 +328,6 @@ const ExplorationLayer = ({ onLaunchWaiting }) => {
                 maxItemSelection={-1}
             />
 
-            {console.log(JSON.stringify(selectedStages))}
-
             <div className="my-2">
                 <p className="my-6 text-slate-700 text-sm md:text-md leading-5">
                     Launching the visualization takes a few seconds. When the data is ready 
