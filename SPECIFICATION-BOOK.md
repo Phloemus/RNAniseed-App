@@ -47,7 +47,35 @@ The main focus of the tool is to be easy to use. Developping a well designed use
 and a solid link with all the databases serving as data providers will be mendatory for the 
 success of the project.
 
-### Filtering the data
+## Project pieces 
+
+RNAniseed serves as an iterface for the user between a database and a visual tool while 
+giving some context as well as filters to use during the visualization process. The project 
+is composed of 3 distinct parts: 
+
+1. A database : the database has a collection of single cell data formated using a predifined
+                schema or composed of documents to read. The database also include some 
+                metadata (also called tags) that are used to query a part of the available 
+                data or to realize filtrations during the visualization process in order for 
+                the user to explore the data more efficiently and to observe paterns within
+                the single cell RNA seq data
+
+2. A query interface : the query interface allow the user to choose the mode of experiment 
+                       the user wants to perform as well as selecting the data he wants to 
+                       use for his experiment. The UI should be simple and encourage the 
+                       biologist to select some criterias before launching a visualization
+                       blindly with no clear goal in mind.
+
+3. A visualization interface : the visualisation interface is a way for the user to have a 
+                               clear picture of the data selected and to explore, find 
+                               paterns or compare datasets using the filters on the data
+                               displayed.
+
+These 3 pieces of the project are detailed in specific sections of this specification book 
+but the entire project rely on data filtration and data tagging to make sense, this is the 
+topic discussed in the next section.
+
+## Data filtration
 
 The main exploration and comparison features of the project rely on the flexibilty for the 
 users to laverage filters upon the data. Filters rely on tags surrounding the sequencing 
@@ -108,28 +136,30 @@ are required select a part of the data contained in the database. They also are 
 The remaining tags will be used as Exploration Filters (aka filters that can be optionnally
 used during the visualization of the data)
 
+
+
+## Database Part
+
+## Handeling the data
+
+### Data structure
+
+
+
+
+## Query Interface
+
+
+
+
+
+
+## Visualisation Interface
+
+
+
+
+
 ### Requirements related
 
 ### Parterships (some scientists and ressources)
-
-### Boundaries of the project
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Technical execution
-
-### Technologies choosen and justifications
-
-### 
