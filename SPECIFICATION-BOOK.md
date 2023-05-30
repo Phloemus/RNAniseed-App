@@ -219,10 +219,11 @@ This launcher relies on the quality and the number of tags to give an interestin
 
 ## Visualization Interface
 
+The Visualization Interface allow to explore the single cell RNA seq data. The tags should also be available to filter the data easily by any user. 
 
+A CellxGene like interface would fit perfectly for the Visualization Interface, because it maches our main criterias for the visualization.
 
+1. Allowing to do mini queries using some extracted from the database
+2. Filtering by gene and possibitity to create gene sets 
+3. Having a clusterization method 
 
-
-### Requirements related
-
-### Parterships (some scientists and ressources)
