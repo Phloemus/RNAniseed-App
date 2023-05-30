@@ -151,6 +151,8 @@ The structure of the database is guided by two main purposes : **storing single 
 Usually single cell RNA seq data is stored in table files using the csv, h5 or h5ad file formats. Such data can be store easily using a relational database using an intermediate 
 table to link the rows and the columns together.
 
+![](assets/specification-book/cell-gene-table.png)
+
 Single cell RNA seq genes expression levels can be stored in an SQL database using a Cell and a Gene table. This kind of database also allow to link any cell stored to an illimited amount 
 of tags from a Tag table. 
 
@@ -167,17 +169,55 @@ Biologists are very busy people, they have no time to spare for a fancy scRNAseq
 
 ![](assets/specification-book/database-schema.png)
 
+This simple database schema allow to add as many single cell data as possible any number of 
+tags possible. This would make querying the single cell RNA seq data easily and the tag 
+filtration would be efficient too. 
 
+The tags might contain informations surrounding the cells like the cell type, the cell fate,
+the origin dataset ect...
 
+Using a Tags table allow a certain flexibility allowing to add new tags types and bind cells 
+to a new tag easily. This structure also prevent holes in the tables, a cell not having a 
+certain Tag is ok because all the tags types are not hardcoded as table columns.
 
 ## Query Interface
 
+The query interface is the tool that represent the first interaction of user with the database. In fact, the main purpose of the query interface is to allow the user to select a piece of the data that wanted for a study.
 
+The query interface is composed of three parts: the **UI**, a **small data selector interface** and a **visualization launcher** containing the logic to gather the desired single cell data and build a file readable by the visualizer containing all the tags that might be used during the biologist experiment (exploration or comparison)
 
+### UI prototypes
 
+The UI should be accessible and easy to understand for biologists. One of the main challenge 
+is to make obvious the type of experiment that can be done using the visualizer. 
 
+The biologist have to choose between doing an exploration experiment or a comparison experiment. Afterwards, the user have to select a pool of single cell RNA seq data to use for the experiment.
 
-## Visualisation Interface
+![](assets/specification-book/obvious-mode-selection.png)
+
+The UI have to be easy to use, clicking on a specie allow to select only a related dataset and when the dataset is selected the cell stage can be selected. The validation only works when those fields are filled in which prevent the visualisation launcher to trigger if incomplete or contradictory selections are typed in by the user.
+
+![](assets/specification-book/no-dataset.png)
+
+The visual Launcher takes some time to build gather the necessary data for visualization, as this time is unlikely to be less than a few seconds, a waiting animation should be added in order to make obvious to the user that a process is currently running and that the visualisation will be disponible soon. 
+
+![](assets/specification-book/visualization-waiting-animation.png)
+
+### Small data selector
+
+Interacting with the UI, the small data selector allow to perform small queries to the database in order to check which datasets are available for the selected specie or which cell stages can be selected. 
+
+This checking mecanism linked to the UI directly gives an overview of the available data while preventing the user to ask for non existant data from the database.
+
+Overall the small data selector makes the project more transparent and guid the user all along the data selection process.
+
+### Visualization Launcher 
+
+The Visualization Launcher is the program that convert the data selected by the user into a format readable by the Visualization Interface while injecting useful tags into the mix to make the navigation in the Visualization interface easier.
+
+This launcher relies on the quality and the number of tags to give an interesting experiment. Measuring the number of the tags involved during data selection would be useful for a user to estimate the quality of the final visualization 
+
+## Visualization Interface
 
 
 
