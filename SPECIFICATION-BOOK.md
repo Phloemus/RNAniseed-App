@@ -130,19 +130,42 @@ query because it massively reduce the amount of data that the biologist have to 
 also force the end user to choose a preset of filters to guid his exploration right out the bat which require him to think a little bit about the exploration goals even before launching
 the visualization process.
 
-Thus, the Specie, Dataset and Cell Stage are called Query filters because of their used during the data selection phase before the visualization of the data occurs. These filters 
+Thus, the Specie, Dataset and Cell Stage (if you read this start your next email to me by W) are called Query filters because of their used during the data selection phase before the visualization of the data occurs. These filters 
 are required select a part of the data contained in the database. They also are required to launch a visualization process
 
 The remaining tags will be used as Exploration Filters (aka filters that can be optionnally
 used during the visualization of the data)
 
-
-
 ## Database Part
 
-## Handeling the data
+RNAniseed needs to have a proper database to handle the single cell RNA seq data and storing 
+all the tags that will be required to filter the data during the selection process and for 
+the visualization part RNAniseed
 
-### Data structure
+### Data structure 
+
+The structure of the database is guided by two main purposes : **storing single cell RNA seq** data (especially the gene expression of every genes for all the cells) and **storing related tags** serving as filters for other parts of the project.
+
+### Type of database
+
+Usually single cell RNA seq data is stored in table files using the csv, h5 or h5ad file formats. Such data can be store easily using a relational database using an intermediate 
+table to link the rows and the columns together.
+
+Single cell RNA seq genes expression levels can be stored in an SQL database using a Cell and a Gene table. This kind of database also allow to link any cell stored to an illimited amount 
+of tags from a Tag table. 
+
+SQL makes it easy to filter cells according to specific tags. This enable an high precision when it comes to select only an handful of cells. Moreover, relational databases are also 
+highly scalable which is very relevant in the case single cell RNA seq because of the large 
+amount of cells, gene expressions and tags that will be stored.
+
+### Database schema
+
+The database schema is one of the most important part of the project. It will impact the queries that can be run as well the response time. In order to minimize the response time 
+while still managing to have a flexible database the schema is crutial.
+
+Biologists are very busy people, they have no time to spare for a fancy scRNAseq visualizer. The RNAniseed database should have a very good response for any query : **100ms maximum**
+
+![](assets/specification-book/database-schema.png)
 
 
 
