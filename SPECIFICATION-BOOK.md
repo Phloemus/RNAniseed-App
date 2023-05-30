@@ -47,7 +47,36 @@ The main focus of the tool is to be easy to use. Developping a well designed use
 and a solid link with all the databases serving as data providers will be mendatory for the 
 success of the project.
 
-### Overview
+### Filtering the data
+
+The main exploration and comparison features of the project rely on the flexibilty for the 
+users to laverage filters upon the data. Filters rely on tags surrounding the sequencing 
+data, so the metadata collected with the single cell RNA seq data should be used to make 
+usefull tags.
+
+### Important filters
+
+To ensure the usability of the project for a biologist, precise data filters should be 
+laveraged. A filter is a data characteristic the user can use to exclude a part of the 
+data from an exploration or a comparison process. 
+
+Picking the right types of filters for the project is crutial for the usability and the 
+stability of the project. As such, the implemented filters should fill in multiple 
+characteristics : 
+
+1. A filter should be self explanatory, easy to understand for biologist. Excluding any 
+   statistical metrics to become a filter (At least for now. When the community will 
+   have a better understanding of the underlying technics used for visualisation, 
+   statistical filters might be implemented if the community needs these)
+
+2. A filter should make sense biologically and should be compatible
+
+3. A filter should rely on pre-annotated boolean tags. It would make sense that a tag
+   could have a numerical value to be enter by the user and a threshold validation of 
+   the tag will be computed but this method should be avoided in order the project 
+   more usable of biologists
+
+
 
 ### Requirements related
 

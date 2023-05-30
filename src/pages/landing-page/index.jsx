@@ -17,6 +17,114 @@ const LandingPage = () => {
 
             <Navbar />
 
+            <div className='mx-auto max-w-screen-lg'>
+
+                <div className="mx-4 my-8">
+
+                    <div className="my-8">
+
+                        <h2 className="text-2xl text-slate-900 font-bold">Amélioration de l'application de RNAniseed</h2>
+
+                        <div className="my-4 flex justify-between">
+                            <div className="flex gap-4">
+                                <div className="h-6 w-6 rounded-full bg-slate-200"></div>
+                                <span>Brieuc Quemeneur</span>
+                            </div>
+                            <span>26 mai 2023</span>
+                        </div>
+
+                        <div className="my-4 w-full h-48 bg-slate-100 rounded-md shadow-sm"></div>
+
+                        <div className="my-5">
+                            <p className="my-2 text-slate-700 text-sm md:text-md leading-5">
+                                The Exploration tool of RNAniseed has been finished
+                            </p>
+
+                            <p className="my-2 text-slate-700 text-sm md:text-md leading-5">
+                                it's now possible to 
+                                indicate a specie, a dataset and a set of development stages to launch 
+                                an exploration using the visual tool.
+                            </p>
+
+                            <p className="my-2 text-slate-700 text-sm md:text-md leading-5">
+                                A documentation is being prepared to guid new users, but it using the app 
+                                is easy enough. 
+                            </p>
+                        </div>
+
+                        <div className="w-full my-4 flex gap-4">
+                            <div className="h-12 w-12 flex-none bg-slate-100 rounded-sm"></div>
+                            <div className="p-2 bg-slate-100 rounded-sm">
+                                <h3 className="text-md text-slate-900 font-semibold">Fonctionnalité d'exploration</h3>
+                                <p className="my-1 text-slate-800 text-sm md:text-md leading-5">
+                                    Explorer les données visuellement est maintenant possible
+                                </p>
+                            </div>
+                        </div>
+
+                        <button className="py-2 w-full flex justify-center text-white bg-green-500 rounded-md">
+                            Lire la suite
+                        </button>
+
+                    </div>
+
+                    <section>
+
+                        <div className="my-4 flex w-full gap-4">
+                            <div className="h-20 w-20 bg-slate-100 flex-none rounded-md"></div>
+                            <div>
+                                <div className="flex justify-between gap-4 items-center">
+                                    <h3 className="text-md text-slate-900 font-medium">Nouveauté</h3>
+                                    <span className="text-sm text-slate-800">12 mai 2023</span>
+                                </div>
+                                <div>
+                                    <p className="my-2 text-slate-700 text-sm md:text-md leading-5">
+                                        Il est maintenant possible d'ajouter une espèce dans la base de 
+                                        données...
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="my-4 flex w-full gap-4">
+                            <div className="h-20 w-20 bg-slate-100 flex-none rounded-md"></div>
+                            <div>
+                                <div className="flex justify-between gap-4 items-center">
+                                    <h3 className="text-md text-slate-900 font-medium">Nouveauté</h3>
+                                    <span className="text-sm text-slate-800">12 mai 2023</span>
+                                </div>
+                                <div>
+                                    <p className="my-2 text-slate-700 text-sm md:text-md leading-5">
+                                        Il est maintenant possible d'ajouter une espèce dans la base de 
+                                        données...
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="my-4 flex w-full gap-4">
+                            <div className="h-20 w-20 bg-slate-100 flex-none rounded-md"></div>
+                            <div>
+                                <div className="flex justify-between gap-4 items-center">
+                                    <h3 className="text-md text-slate-900 font-medium">Nouveauté</h3>
+                                    <span className="text-sm text-slate-800">12 mai 2023</span>
+                                </div>
+                                <div>
+                                    <p className="my-2 text-slate-700 text-sm md:text-md leading-5">
+                                        Il est maintenant possible d'ajouter une espèce dans la base de 
+                                        données...
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+
+                </div>
+
+            </div>
+
+
+        {/*
+
             <main className="my-10 mx-4">
 
                 <section className="my-8">
@@ -63,6 +171,8 @@ const LandingPage = () => {
                 
 
             </main>
+
+        */}
             
 
 
