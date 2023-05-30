@@ -54,7 +54,7 @@ users to laverage filters upon the data. Filters rely on tags surrounding the se
 data, so the metadata collected with the single cell RNA seq data should be used to make 
 usefull tags.
 
-### Important filters
+### Choosing the right filters
 
 To ensure the usability of the project for a biologist, precise data filters should be 
 laveraged. A filter is a data characteristic the user can use to exclude a part of the 
@@ -76,7 +76,37 @@ characteristics :
    the tag will be computed but this method should be avoided in order the project 
    more usable of biologists
 
+### Relevant tags and filters
 
+Some relevant tags found for single cell RNA seq data are :
+
+1. The Specie
+2. The Dataset
+3. The Cell Stage
+4. The Cell Fate
+5. The Cell Name within embryo
+6. The Gene Expressed
+7. The intensity of the Gene Expression
+
+Filtering using these tags will help the community tremendously especially if the filters 
+can be combined in a query or for data exploration purposes.
+
+### Exploration Filters vs Query Filters
+
+To explore available single cell data visually, using the entire database would be way to 
+hard to start with. In order to counter this issue, some of the tags can be used as a 
+primary filter to eliminate unwanted data even before the visualization process. 
+
+The Specie, Dataset and Cell Stage tags are especially interesting for this primary database
+query because it massively reduce the amount of data that the biologist have to work with and 
+also force the end user to choose a preset of filters to guid his exploration right out the bat which require him to think a little bit about the exploration goals even before launching
+the visualization process.
+
+Thus, the Specie, Dataset and Cell Stage are called Query filters because of their used during the data selection phase before the visualization of the data occurs. These filters 
+are required select a part of the data contained in the database. They also are required to launch a visualization process
+
+The remaining tags will be used as Exploration Filters (aka filters that can be optionnally
+used during the visualization of the data)
 
 ### Requirements related
 
