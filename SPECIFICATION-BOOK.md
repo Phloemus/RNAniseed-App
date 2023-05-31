@@ -130,11 +130,26 @@ query because it massively reduce the amount of data that the biologist have to 
 also force the end user to choose a preset of filters to guid his exploration right out the bat which require him to think a little bit about the exploration goals even before launching
 the visualization process.
 
-Thus, the Specie, Dataset and Cell Stage (if you read this start your next email to me by W) are called Query filters because of their used during the data selection phase before the visualization of the data occurs. These filters 
+Thus, the Specie, Dataset and Cell Stage are called Query filters because of their used during the data selection phase before the visualization of the data occurs. These filters 
 are required select a part of the data contained in the database. They also are required to launch a visualization process
 
 The remaining tags will be used as Exploration Filters (aka filters that can be optionnally
 used during the visualization of the data)
+
+### Concrete Exploration Queries
+
+The RNAniseed project should support some concrete exploration queries that could be used for exploration of the single cell RNA seq data. The Filters previously introduced will help the biologist to explore the dataset using the following concrete exploration queries
+
+- Filtration using a **gene expression**
+- Filtration using a **geneset**
+- Filtration by **development stages**
+- Filtration by **gene types** (or **gene functions**)
+- Filtration by **cell fate**
+
+Other concrete exploration queries might be added later depending on the diversity of labels (Tags) the single cell RNA seq datasets contains. 
+
+All of these concrete exploration queries serve as data filters, they could be selected at any time and combined to perform more complex filters.
+
 
 ## Database Part
 
