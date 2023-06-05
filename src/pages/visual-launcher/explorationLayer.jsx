@@ -102,7 +102,6 @@ const ExplorationLayer = ({ onLaunchWaiting }) => {
      */
     const selectSpecie = (arr) => {
         setSelectedSpecie((prev) => prev === arr[0] ? null : arr[0])
-        console.log(selectedSpecie)
     }
 
     const filterSpecies = (text) => {
@@ -169,7 +168,7 @@ const ExplorationLayer = ({ onLaunchWaiting }) => {
 
     const getRelatedDatasets = () => {
         if(selectedSpecie == null) { return }
-        fetch(`http://localhost:8000/api/species/${selectedSpecie+1}/datasets`, {
+        fetch(`http://localhost:8000/api/species/${selectedSpecie}/datasets`, {
             method: "GET",
             headers: {
                 'Accept': 'application/json',
