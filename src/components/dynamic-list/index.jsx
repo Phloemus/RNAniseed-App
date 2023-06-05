@@ -1,7 +1,6 @@
 /********************************* Dynamic List component ****************************************** /
  * 
  * Author: Brieuc Quemeneur
- * Copyrights: gingembre.org
  * 
  */
 

@@ -102,6 +102,7 @@ const ExplorationLayer = ({ onLaunchWaiting }) => {
      */
     const selectSpecie = (arr) => {
         setSelectedSpecie((prev) => prev === arr[0] ? null : arr[0])
+        console.log(selectedSpecie)
     }
 
     const filterSpecies = (text) => {
@@ -154,9 +155,9 @@ const ExplorationLayer = ({ onLaunchWaiting }) => {
             }
         }).then((data) => {
             let speciesTemp = []
-            data.map((specie, id) => {
+            data.map((specie) => {
                 speciesTemp.push({
-                    id: id,
+                    id: specie.id,
                     title: specie.name,
                     description: "description de " + specie.name
                 })

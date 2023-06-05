@@ -146,7 +146,7 @@ The RNAniseed project should support some concrete exploration queries that coul
 - Filtration by **gene types** (or **gene functions**)
 - Filtration by **cell fate**
 
-Other concrete exploration queries might be added later depending on the diversity of labels (Tags) the single cell RNA seq datasets contains. 
+Other concrete exploration queries might be added later depending on the diversity of labels (Tags) the single cell RNA seq datasets contains.
 
 All of these concrete exploration queries serve as data filters, they could be selected at any time and combined to perform more complex filters.
 
@@ -236,7 +236,7 @@ This launcher relies on the quality and the number of tags to give an interestin
 
 The Visualization Interface allow to explore the single cell RNA seq data. The tags should also be available to filter the data easily by any user. 
 
-A CellxGene like interface would fit perfectly for the Visualization Interface, because it maches our main criterias for the visualization.
+A CellxGene like interface would fit perfectly for the Visualization Interface, because it matches our main criterias for the visualization.
 
 1. Allowing to do mini queries using some extracted from the database
 2. Filtering by gene and possibitity to create gene sets 
