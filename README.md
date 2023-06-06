@@ -38,6 +38,21 @@ For instance, combining filters by clicking on the buttons of the left side bar 
 
 A query is performed when you select a filter, every cell in matching the selected filter will be highlighted in the visual interface. Colors may also help you to differenciate the different filters for each category.
 
+### Queries and scientific questions answered by RNAniseed
+
+RNAniseed is based on filters like the tissue, the development stage, the gene expression, etc...
+You can combine them easily to perform as complex queries as you want. 
+
+There is a small list of queries you will be able to perform using RNAniseed:
+
+1. Find a a marker for a certain tissue
+2. Find a Gene present in a certain tissue for a specific development stage
+3. Find Genes present in two different tissues
+4. Find a Cell expressing a certain Gene
+5. Find a Cell expressing a certain Gene and being of a specific development stage
+6. Find the Cells having the largest transcriptome within the data 
+7. Find the Cells having the largest transcriptome for a certain tissue and for a specific development stage
+
 ## Concrete scenario
 
 Let's say you want to investigate only on **A5 cells** disponible in a **specific dataset**. 
