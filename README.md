@@ -80,28 +80,32 @@ In a final step, a file is created containing all this information and displayed
 
 When the visualization tool is launched you should end up in a screen looking like this. If you know cellxgene a bit you might have notice some similarities. In fact, the visual tool used for RNAniseed is based on a modified version of cellxgene where some RNAniseed specific features have been added.
 
+#### Parts of the visual tool 
+
 The visual tool is composed of 3 parts:
 
 1. The **Filter side bar** *(at the left of the page)*: Containing clickable labeled box allowing you to filter the data in a specific way, inducing a coloration or making some cell disapear from the canvas. The Gene expression for each filters display itself when a gene is seleced. We will see how to use filters and combining them in a later part
 
 <p align="center" width="100%">
-    <img width="45%" src="assets/readme/visual-tool-left-bar.png">
-    <img width="45%" src="assets/readme/visual-tool-left-bar-2.png">
+    <img width="30%" src="assets/readme/visual-tool-left-bar.png">
+    <img width="30%" src="assets/readme/visual-tool-left-bar-2.png">
 </p>
 
 2. The **Canvas** *(at the center of the page)*: Contains a point for every cell matching at least one of the element you used as a filter. The colors of the point can vary depending on the cell group the cell is part of. When a Gene is selected, the expression level can be directly seen by a color gradient on the cell points themselves.
 
 <p align="center" width="100%">
-    <img width="45%" src="assets/readme/visual-tool-canvas.png">
-    <img width="45%" src="assets/readme/visual-tool-canvas-2.png">
+    <img width="40%" src="assets/readme/visual-tool-canvas.png">
+    <img width="40%" src="assets/readme/visual-tool-canvas-2.png">
 </p>
 
 3. The **Gene side bar** *(at the right of the page)*: Contains a small Gene search bar you can use to look for a specific gene within the dataset. When a gene has been found, clicking on it will reveal the expression level of every cell matching the filtration.
 
 <p align="center" width="100%">
-    <img width="45%" src="assets/readme/visual-tool-right-bar.png">
-    <img width="45%" src="assets/readme/visual-tool-geneset-creation.png">
+    <img width="40%" src="assets/readme/visual-tool-right-bar.png">
+    <img width="40%" src="assets/readme/visual-tool-geneset-creation.png">
 </p>
+
+### How to filter data using the virual tool ?
 
 
 
