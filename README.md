@@ -56,15 +56,19 @@ As you are currently working on **Phallusia mammillata**, you select this specie
     <img width="60%" src="assets/readme/specie-dataset-selection.png">
 </p>
 
-Depending on the dataset you selected, different development stages will be displayed. Select those you are interested in. As you want to investigate on **A5 cells**, You want to select the 16 cell stage with any other stage that might be relevant to you as well. 
+Depending on the dataset you selected, different development stages will be displayed. Select those you are interested in. As you want to investigate on **A5 cells**, You want to select the 16 cell stage in priority with any other stage that might be relevant to you as well. 
 
 <p align="center" width="100%">
     <img width="60%" src="assets/readme/select-stage.png">
 </p>
 
-After all the fields have been filled in, just hit the "Launch visualization" button
+After filling all the fields, just hit the **"Launch visualization"** button. The visualization takes some time to be launched but don't worry it takes at most 30 seconds. 
 
-The visualization takes some time to be launched but don't worry it takes at most 30 seconds. When you click on this button, the **RNAnissed** program filters only the relevant data from its database then this data is completed using the Aniseed database catching relevant informations such as genes names, functions etc... 
+<p align="center" width="100%">
+    <img width="60%" src="assets/readme/visual-tool-launch-waiting.png">
+</p>
+
+When you click on this button, the **RNAnissed** program filters only the relevant data from its database then this data is completed using the **Aniseed** database, catching relevant informations such as genes names, functions etc... 
 
 In a final step, a file is created containing all this information and displayed using the visualization tool. Everything is done automatically, don't worry about it.
 
