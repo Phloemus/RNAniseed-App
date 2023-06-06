@@ -107,7 +107,15 @@ The visual tool is composed of 3 parts:
 
 ### How to filter data using the virual tool ?
 
+Filtering the data using the virtual tool can be done by clicking on the buttons of the left side bar. When you select a filter, the colors of the cells present on the canvas change to match the filter the cell is a part of. 
 
+To continue the example of the exploration for the **A5 cells**, it's possible to unselect all the filters and only keep the one called "A5 cells" to see where the cells are located on the canvas.
+
+We can see **42 cells** of the type A5 present in **3 different clusters**. This means that the transcriptome of these **A5 cells** are very different in nature which underline the different fates of the **A5 cells**. 
+
+Using **Gene 6** as a filter also show different transciption level within the same cluster. This differences could be significative if the same oberservation can be donne on different datasets. The **Gene 6** may have an important role in early cell differenciation or may be a marker for a specific cellular fate or position within the embryo.
+
+The exploration possibilities are endless, you can perform much more complicated queries by combining multiple **filters**, **gene-expressions**, or even **genesets** !
 
 
 ## Licence
