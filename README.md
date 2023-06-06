@@ -47,19 +47,19 @@ Let's say you want to investigate only on **A5 cells** disponible in a **specifi
 Even before your exploration you need to launch the virtual tool by filling the info about the dataset you want to use, the specie and the development stage. This phase before the visualization is important to help filter the data that might be valuable for your exploration and will prevent you to be lost in all the data available in Aniseed.
 
 <p align="center" width="100%">
-    <img width="33%" src="https://github.com/Phloemus/RNAniseed-App/tree/master/assets/readme/exploration-page.png">
+    <img width="33%" src="https://github.com/Phloemus/RNAniseed-App/tree/master/assets/readme/exploration-page.png?raw=true">
 </p>
 
 As you are currently working on **Phallusia mammillata**, you select this specie the first associate dataset present in the list.
 
 <p align="center" width="100%">
-    <img width="33%" src="https://github.com/Phloemus/RNAniseed-App/tree/master/assets/readme/specie-dataset-selection.png">
+    <img width="33%" src="https://github.com/Phloemus/RNAniseed-App/tree/master/assets/readme/specie-dataset-selection.png?raw=true">
 </p>
 
 Depending on the dataset you selected, different development stages will be displayed. Select those you are interested in. As you want to investigate on **A5 cells**, You want to select the 16 cell stage with any other stage that might be relevant to you as well. 
 
 <p align="center" width="100%">
-    <img width="33%" src="https://github.com/Phloemus/RNAniseed-App/tree/master/assets/readme/select-stage.png">
+    <img width="33%" src="https://github.com/Phloemus/RNAniseed-App/tree/master/assets/readme/select-stage.png?raw=true">
 </p>
 
 After all the fields have been filled in, just hit the "Launch visualization" button
