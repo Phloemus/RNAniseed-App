@@ -113,7 +113,15 @@ To continue the example of the exploration for the **A5 cells**, it's possible t
 
 We can see **42 cells** of the type A5 present in **3 different clusters**. This means that the transcriptome of these **A5 cells** are very different in nature which underline the different fates of the **A5 cells**. 
 
+<p align="center" width="100%">
+    <img width="60%" src="assets/readme/visual-tool-how-to-filter.png">
+</p>
+
 Using **Gene 6** as a filter also show different transciption level within the same cluster. This differences could be significative if the same oberservation can be donne on different datasets. The **Gene 6** may have an important role in early cell differenciation or may be a marker for a specific cellular fate or position within the embryo.
+
+<p align="center" width="100%">
+    <img width="60%" src="assets/readme/visual-tool-how-to-filter-2.png">
+</p>
 
 The exploration possibilities are endless, you can perform much more complicated queries by combining multiple **filters**, **gene-expressions**, or even **genesets** !
 
