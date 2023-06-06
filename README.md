@@ -47,7 +47,7 @@ Let's say you want to investigate only on **A5 cells** disponible in a **specifi
 Even before your exploration you need to launch the virtual tool by filling the info about the dataset you want to use, the specie and the development stage. This phase before the visualization is important to help filter the data that might be valuable for your exploration and will prevent you to be lost in all the data available in Aniseed.
 
 <p align="center" width="100%">
-    <img width="33%" src="https://github.com/Phloemus/RNAniseed-App/tree/master/assets/readme/exploration-page.png?raw=true">
+    <img width="33%" src="assets/readme/exploration-page.png">
 </p>
 
 As you are currently working on **Phallusia mammillata**, you select this specie the first associate dataset present in the list.
