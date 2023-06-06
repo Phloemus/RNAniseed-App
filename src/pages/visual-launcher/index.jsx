@@ -80,7 +80,7 @@ const VisualLauncher = ({ layerId }) => {
                 /> 
             }
 
-            <main class="mt-8 mx-4 md:mx-auto md:max-w-2xl bg-white rounded-md">
+            <main className="mt-8 mx-4 md:mx-auto md:max-w-2xl bg-white rounded-md">
 
                 <div className="p-4">
 

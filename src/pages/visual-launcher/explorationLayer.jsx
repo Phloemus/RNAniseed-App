@@ -195,7 +195,7 @@ const ExplorationLayer = ({ onLaunchWaiting }) => {
 
     const getRelatedStages = () => {
         if(selectedDataset == null) { return }
-        fetch(`http://localhost:8000/api/datasets/${selectedDataset+1}/stages`, {
+        fetch(`http://localhost:8000/api/datasets/${selectedDataset}/stages`, {
             method: "GET",
             headers: {
                 'Accept': 'application/json',
@@ -211,7 +211,7 @@ const ExplorationLayer = ({ onLaunchWaiting }) => {
             let stagesTemp = []
             data.map((stage, id) => {
                 stagesTemp.push({
-                    id: id,
+                    id: stage.id,
                     title: stage.name,
                     description: "description de " + stage.name
                 })
@@ -315,7 +315,7 @@ const ExplorationLayer = ({ onLaunchWaiting }) => {
 
             <div className="my-6">
                 <h2 className="text-lg text-slate-800 font-semibold">Select development stages</h2>
-                <p class="my-2 text-slate-700 text-sm md:text-md leading-5">
+                <p className="my-2 text-slate-700 text-sm md:text-md leading-5">
                     Select as many development stages as you want to explore visually
                 </p>
             </div>
