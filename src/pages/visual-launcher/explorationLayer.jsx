@@ -116,6 +116,8 @@ const ExplorationLayer = ({ onLaunchWaiting }) => {
 
     
     const selectStages = (arr) => {
+        //! There is a problem when the stage is selected...
+        //! It's likely to be issue here
         const newStages = arr.map((id) => stages[id])
         setSelectedStages(newStages)
     }
@@ -182,9 +184,9 @@ const ExplorationLayer = ({ onLaunchWaiting }) => {
             }
         }).then((data) => {
             let datasetsTemp = []
-            data.map((dataset, id) => {
+            data.map((dataset) => {
                 datasetsTemp.push({
-                    id: id,
+                    id: dataset.id,
                     title: dataset.name,
                     description: "description de " + dataset.name
                 })
