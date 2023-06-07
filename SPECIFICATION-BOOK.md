@@ -4,6 +4,18 @@ The RNAniseed specification book (*"cahier des charge"* in french) is a document
 the goals of the project, the public for whom the tool is design for and the technical 
 specifications that are involved in the conception of the project.
 
+## Small Glossary
+
+- **Ascidian** : Animals belonging to the tunicate group. Their close proximity from vertebrates make them very useful for research especially for the study of early development. 
+- **scRNAseq** : means *single cell RNA sequencing*, this is a reference to a biological method of data extraction by sequencing the cell's transcriptome a cell at a time. This biological technic is often couple with a statistical analysis to ensure that the data is relyable and can be used to draw correlations between a gene and a certain cell condition
+- **Aniseed** : The ascidian community reference database where data about ascidian embryos are stored and can be queried from (https://aniseed.fr)
+- **Filter** : This term is used a lot in this document, it's used to describe a condition that can be choosen by the user in order to affect the data selected by restricting the number of records matching the filtering condition. In other words, filter is the user friendly tool used to perform a  query on the single cell RNA seq data
+- **Tag** : A tag is the unique name given to a filter. This term is used to differenciate the act of filtering (quering) the data and the role of this filtration on the single cell RNA seq data
+- **Query Interface** : This is a term used to describe the part of the project on which the user have to indicate the mode used as well as some details before the visualization of the data. The Query Interface is a reference to its UI as well as its role : performing a first data filtration depending on the user scientific question.
+- **Visualization Interface** : This term describe the part of the application that actually perform a visualization of the data. The Visualization Interface is a reference to its UI, its role in the visualization process and the filtration mecanisms that can be performed using the UI of this interface.
+- **Query Filter** : It's a filter used in the Query Interface. The tags of these **Query Filters** are: **Specie**, **Dataset**, **Development Stage**. They have to be filled with a value to launch the visualization part of the Application
+- **Exploration Filters** : It's an optional filter that can be used or not during the visualisation through the **Visualization Interface**. As those filters can be selected when the user wants, they grant a large diversity of combination to choose from, which is an ideal way to explore the single cell RNA seq data
+
 ## The public
 
 The public of the project is the ascidian community and the scientific community at large 
@@ -21,16 +33,15 @@ integration with external databases.
 
 ## The Goals 
 
-Visualisation of single cell RNA seq data require using R or python, which many biologists
-are not familiar with. This is a pain point that prevent the adoption of single cell data 
-exploration despite all the potential of this method for ascidian development. 
+Usually, visualisation of single cell RNA seq data require using R or python, which many biologists
+are not familiar with. We belive that this is a pain point prevent the mass adoption of single cell data exploration within the ascidian community, despite all the potential in the study of tunicates. 
 
 The main goal of this project is to eliminate this pain point by providing an easy to use 
 visualization tool for biologist having none or little background in informatics.
 
 In general, statistics and clusterization are performed on such large datasets. This is 
-also the case for this tool, which makes the biologist able to identify clusters in the 
-single cell data and filter them using a rich variety of filters.
+also the case for this tool, which makes the biologist able to identify clusters in their 
+single cell RNA seq data and allow them to filter this data using a rich variety of parameters to choose from.
 
 The clusterization and the filters gives the RNAniseed tool two purposes: 
 
@@ -53,20 +64,20 @@ RNAniseed serves as an iterface for the user between a database and a visual too
 giving some context as well as filters to use during the visualization process. The project 
 is composed of 3 distinct parts: 
 
-1. A database : the database has a collection of single cell data formated using a predifined
+1. **A database** : the database has a collection of single cell data formated using a predifined
                 schema or composed of documents to read. The database also include some 
                 metadata (also called tags) that are used to query a part of the available 
                 data or to realize filtrations during the visualization process in order for 
                 the user to explore the data more efficiently and to observe paterns within
                 the single cell RNA seq data
 
-2. A query interface : the query interface allow the user to choose the mode of experiment 
+2. **A query interface** : the query interface allow the user to choose the mode of experiment 
                        the user wants to perform as well as selecting the data he wants to 
                        use for his experiment. The UI should be simple and encourage the 
                        biologist to select some criterias before launching a visualization
                        blindly with no clear goal in mind.
 
-3. A visualization interface : the visualisation interface is a way for the user to have a 
+3. **A visualization interface** : the visualisation interface is a way for the user to have a 
                                clear picture of the data selected and to explore, find 
                                paterns or compare datasets using the filters on the data
                                displayed.
@@ -125,15 +136,15 @@ To explore available single cell data visually, using the entire database would 
 hard to start with. In order to counter this issue, some of the tags can be used as a 
 primary filter to eliminate unwanted data even before the visualization process. 
 
-The Specie, Dataset and Cell Stage tags are especially interesting for this primary database
+The **Specie**, **Dataset** and **Development Stage** tags are especially interesting for this primary database
 query because it massively reduce the amount of data that the biologist have to work with and 
-also force the end user to choose a preset of filters to guid his exploration right out the bat which require him to think a little bit about the exploration goals even before launching
+also force the end user to choose a preset of filters to guid his exploration right out the bat which require him to think a little bit about the exploration goals before launching
 the visualization process.
 
-Thus, the Specie, Dataset and Cell Stage are called Query filters because of their used during the data selection phase before the visualization of the data occurs. These filters 
+Thus, the **Specie**, **Dataset** and **Development Stage** are called **Query filters** because of their used during the data selection phase before the visualization of the data occurs. These filters 
 are required select a part of the data contained in the database. They also are required to launch a visualization process
 
-The remaining tags will be used as Exploration Filters (aka filters that can be optionnally
+The remaining filters will be used as **Exploration Filters** (aka filters that can be optionnally
 used during the visualization of the data)
 
 ### Concrete Exploration Queries
@@ -146,7 +157,7 @@ The RNAniseed project should support some concrete exploration queries that coul
 - Filtration by **gene types** (or **gene functions**)
 - Filtration by **cell fate**
 
-Other concrete exploration queries might be added later depending on the diversity of labels (Tags) the single cell RNA seq datasets contains.
+Other concrete exploration queries might be added later depending on the diversity of labels (**Tags**) the single cell RNA seq datasets contains.
 
 All of these concrete exploration queries serve as data filters, they could be selected at any time and combined to perform more complex filters.
 
@@ -154,8 +165,7 @@ All of these concrete exploration queries serve as data filters, they could be s
 ## Database Part
 
 RNAniseed needs to have a proper database to handle the single cell RNA seq data and storing 
-all the tags that will be required to filter the data during the selection process and for 
-the visualization part RNAniseed
+all the tags that will be required for a smooth data exploration.
 
 ### Data structure 
 
@@ -163,37 +173,39 @@ The structure of the database is guided by two main purposes : **storing single 
 
 ### Type of database
 
-Usually single cell RNA seq data is stored in table files using the csv, h5 or h5ad file formats. Such data can be store easily using a relational database using an intermediate 
+Usually single cell RNA seq data is stored in table files using the csv, h5 or h5ad file formats. Such data can be store easily with a relational database using an intermediate 
 table to link the rows and the columns together.
 
-![](assets/specification-book/cell-gene-table.png)
+<p align="center" width="100%">
+    <img width="60%" src="assets/specification-book/cell-gene-table.png">
+</p>
 
 Single cell RNA seq genes expression levels can be stored in an SQL database using a Cell and a Gene table. This kind of database also allow to link any cell stored to an illimited amount 
 of tags from a Tag table. 
 
-SQL makes it easy to filter cells according to specific tags. This enable an high precision when it comes to select only an handful of cells. Moreover, relational databases are also 
-highly scalable which is very relevant in the case single cell RNA seq because of the large 
-amount of cells, gene expressions and tags that will be stored.
+SQL makes it easy to filter cells according to specific tag. This enable an high precision when it comes to selecting only an handful of cells. Moreover, relational databases are also 
+highly scalable which is very relevant in the case single cell RNA seq due to the large 
+amount of cells, gene expressions and tags that need to be stored.
 
 ### Database schema
 
-The database schema is one of the most important part of the project. It will impact the queries that can be run as well the response time. In order to minimize the response time 
-while still managing to have a flexible database the schema is crutial.
+The database schema is one of the most important part of the project. It will impact the queries complexity as well the database response time. In order to minimize the response time adopting a flexible database schema is crutial.
 
-Biologists are very busy people, they have no time to spare for a fancy scRNAseq visualizer. The RNAniseed database should have a very good response for any query : **100ms maximum**
+Biologists are very busy people. They have no time to spare trying a fancy scRNAseq visualizer. The RNAniseed database should have a very good response for any query : **100ms maximum**
 
-![](assets/specification-book/database-schema.png)
+<p align="center" width="100%">
+    <img width="60%" src="assets/specification-book/database-schema.png">
+</p>
 
-This simple database schema allow to add as many single cell data as possible any number of 
-tags possible. This would make querying the single cell RNA seq data easily and the tag 
+This simple database schema allows to add as many single cell RNA data as possible and any number of 
+tags. This would make querying the single cell RNA seq data easily and the tag 
 filtration would be efficient too. 
 
-The tags might contain informations surrounding the cells like the cell type, the cell fate,
-the origin dataset ect...
+The tags might contain informations surrounding the cells like the **cell type**, the **cell fate**,
+the **origin dataset** ect...
 
 Using a Tags table allow a certain flexibility allowing to add new tags types and bind cells 
-to a new tag easily. This structure also prevent holes in the tables, a cell not having a 
-certain Tag is ok because all the tags types are not hardcoded as table columns.
+to a new tag easily. This structure also prevent holes in the tables. For instance, for a cell, not having a certain Tag is ok because all the tags types are not hardcoded as table columns.
 
 ## Query Interface
 
@@ -206,17 +218,23 @@ The query interface is composed of three parts: the **UI**, a **small data selec
 The UI should be accessible and easy to understand for biologists. One of the main challenge 
 is to make obvious the type of experiment that can be done using the visualizer. 
 
-The biologist have to choose between doing an exploration experiment or a comparison experiment. Afterwards, the user have to select a pool of single cell RNA seq data to use for the experiment.
+The biologists have to choose between doing an **exploration experiment** or a **comparison experiment**. Afterwards, the user have to select a pool of single cell RNA seq data to use for the experiment.
 
-![](assets/specification-book/obvious-mode-selection.png)
+<p align="center" width="100%">
+    <img width="60%" src="assets/specification-book/obvious-mode-selection.png">
+</p>
 
-The UI have to be easy to use, clicking on a specie allow to select only a related dataset and when the dataset is selected the cell stage can be selected. The validation only works when those fields are filled in which prevent the visualisation launcher to trigger if incomplete or contradictory selections are typed in by the user.
+The UI have to be easy to use, clicking on a specie allow to select only a related dataset and when the dataset is selected the cell stage can be selected. The validation only works when those fields are filled in. This prevent the visualisation launcher to trigger if incomplete or contradictory selections are typed in by the user.
 
-![](assets/specification-book/no-dataset.png)
+<p align="center" width="100%">
+    <img width="60%" src="assets/specification-book/no-dataset.png">
+</p>
 
-The visual Launcher takes some time to build gather the necessary data for visualization, as this time is unlikely to be less than a few seconds, a waiting animation should be added in order to make obvious to the user that a process is currently running and that the visualisation will be disponible soon. 
+The Visual Launcher takes some time to build and gather the necessary data for visualization. As the Visual Launcher execution time is unlikely to be less than a few seconds, a waiting animation should be added in order to make obvious to the user that a process is currently running and that the visualisation will be disponible soon.
 
-![](assets/specification-book/visualization-waiting-animation.png)
+<p align="center" width="100%">
+    <img width="60%" src="assets/specification-book/visualization-waiting-animation.png">
+</p>
 
 ### Small data selector
 
