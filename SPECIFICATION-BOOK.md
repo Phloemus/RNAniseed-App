@@ -173,8 +173,9 @@ The structure of the database is guided by two main purposes : **storing single 
 
 ### Type of database
 
-Usually single cell RNA seq data is stored in table files using the csv, h5 or h5ad file formats. Such data can be store easily with a relational database using an intermediate 
-table to link the rows and the columns together.
+Usually single cell RNA seq data is stored in table files using the csv, h5 or h5ad file formats. Such data formats require to build a protocol able to convert them into rows that can be placed into a relational database.
+
+A table of gene expressions for every cell should be converted into SQL statements that would create rows according to the original gene expression using the database schema defined in the next section
 
 <p align="center" width="100%">
     <img width="60%" src="assets/specification-book/cell-gene-table.png">

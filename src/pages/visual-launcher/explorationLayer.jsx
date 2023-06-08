@@ -212,8 +212,10 @@ const ExplorationLayer = ({ onLaunchWaiting }) => {
         }).then((data) => {
             let stagesTemp = []
             data.map((stage, id) => {
+                //! using id directly instead of stage.id make the selection working but
+                //! this is unconsistance and not clean at all... (issue in Dynamic List)
                 stagesTemp.push({
-                    id: stage.id,
+                    id: id,
                     title: stage.name,
                     description: "description de " + stage.name
                 })
@@ -264,6 +266,10 @@ const ExplorationLayer = ({ onLaunchWaiting }) => {
      */
     return(
         <div className="my-6">
+
+            {
+                console.log('stages: ' + JSON.stringify(stages) + ' selected Stages: ' + JSON.stringify(selectedStages))
+            }
 
             <Helmet>
                 <html lang="en" />

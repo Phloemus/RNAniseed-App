@@ -102,6 +102,9 @@ const DynamicList = ({items, selectedItemIds, changeSelectedItems, notFoundMsg, 
         const _selectedItems = JSON.parse(JSON.stringify(selectedItemIds));
 
         // case of maxItemSelection illimited (-1)
+        //! the id of the item should be 0 to x following the order of the item pos in the 
+        //! array. This is pretty bad because the case of the maxItemSelection = 1 doesn't work 
+        //! like this. Induce confusion within the codebase
         if(maxItemSelection === -1) {
             if(!selectedItemIds.includes(id)) {
                 _selectedItems.push(id)

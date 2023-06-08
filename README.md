@@ -16,7 +16,7 @@ Using RNAniseed is easy:
 
 1. Go on RNAniseed *(https://aniseed.fr/rnaniseed)*
 2. Select the mode you want to use (**exploration** for 1 dataset, **comparison** for multiple datasets)
-3. Indicate the **species**, the **datasets** and the **development cell stage** you want to investigate on
+3. Indicate the **specie**, the **datasets** and the **development cell stage** you want to investigate on
 4. Hit the "Launch visualization" button
 5. Explore the data as you want by using the **filters** disponible and the by looking for the expression of a **gene** or **geneset**
 
@@ -53,7 +53,7 @@ There is a small list of queries you will be able to perform using RNAniseed:
 6. Find the Cells having the largest transcriptome within the data 
 7. Find the Cells having the largest transcriptome for a certain tissue and for a specific development stage
 
-## Concrete scenario
+## Concrete scenario "How to ?"
 
 Let's say you want to investigate only on **A5 cells** disponible in a **specific dataset**. 
 
