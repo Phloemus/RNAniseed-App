@@ -15,8 +15,6 @@ const LandingPage = () => {
                 <title>RNAniseed - The visual database for single cell datasets</title>
             </Helmet>
 
-            <Navbar />
-
             <div className='mx-auto max-w-screen-lg'>
 
                 <div className="mx-4 my-8">

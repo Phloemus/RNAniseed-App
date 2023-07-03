@@ -9,9 +9,8 @@ const Navbar = () => {
 
     const [isBannerVisible, setIsBannerVisible] = React.useState(true)
 
-
     return(
-        <div>
+        <div className='fixed top-0 left-0 w-full z-10'>
 
             {
                 isBannerVisible ? (
@@ -22,10 +21,20 @@ const Navbar = () => {
                             </span>
                             <div className='flex gap-1 items-center'>
                                     <span>
-                                        check out the 
+                                        check out our 
                                     </span>
                                     <a 
-                                        className='hover:underline'
+                                        className='underline'
+                                        href='https://github.com/Phloemus/RNAniseed-App/blob/master/README.md'
+                                        target="_blank"
+                                    >
+                                        tutorial
+                                    </a>
+                                    <span>
+                                        or the
+                                    </span>
+                                    <a 
+                                        className='underline'
                                         href='https://github.com/Phloemus/RNAniseed-App/blob/master/README.md'
                                         target="_blank"
                                     >
@@ -57,7 +66,17 @@ const Navbar = () => {
                         <li className="hover:underline"><Link to="/explore">Explore</Link></li>
                         <li className="hover:underline"><Link to="/compare">Compare</Link></li>
                     </ul>
-                    <button className="px-4 py-2 bg-green-500 text-white text-sm rounded-md hover:shadow-md">Connection</button>
+                    <a href="https://aniseed.fr/jauth/login/form?module=jauth&action=login:form">
+                        <button className="
+                            px-4 py-2 
+                            bg-green-500 
+                            text-white text-sm 
+                            rounded-md 
+                            hover:shadow-md
+                        ">
+                            Connection
+                        </button>
+                    </a>
                 </div>
             </nav>
         </div>

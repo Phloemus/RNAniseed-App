@@ -129,13 +129,14 @@ const DynamicList = ({items, selectedItemIds, changeSelectedItems, notFoundMsg, 
     }
 
     return(
-        <div className="
+        <div className={`
             bg-slate-100
             border 
             border-slate-100
             rounded-md
             px-4 py-2
-        ">
+            ${items.length >= 5 ? 'h-96 overflow-y-scroll' : ''}
+        `}>
             <ul>
 
                 {

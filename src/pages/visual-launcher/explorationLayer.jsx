@@ -2,10 +2,10 @@
 import React from 'react'
 import { Helmet } from "react-helmet";
 
-//! Test purposes - fixtures
+//! Test purposes - fixtures (used as placeholder data)
 // import specieItems from './data/exploration-layer/fixtures-species.json'
-import datasetItems from './data/exploration-layer/fixtures-datasets.json'
-import stageItems from './data/exploration-layer/fixtures-stages.json'
+// import datasetItems from './data/exploration-layer/fixtures-datasets.json'
+// import stageItems from './data/exploration-layer/fixtures-stages.json'
 
 
 /************************************* component imports ******************************************** */
@@ -14,6 +14,7 @@ import DynamicList from "../../components/dynamic-list"
 /************************************* endpoints **************************************************** */
 import { publicRoutes } from '../../api/endpoints'
 import SearchInput from '../../components/search-input'
+
 
 
 /************************************* Exploration Layer ********************************************* /
@@ -116,8 +117,6 @@ const ExplorationLayer = ({ onLaunchWaiting }) => {
 
     
     const selectStages = (arr) => {
-        //! There is a problem when the stage is selected...
-        //! It's likely to be issue here
         const newStages = arr.map((id) => stages[id])
         setSelectedStages(newStages)
     }
@@ -212,8 +211,6 @@ const ExplorationLayer = ({ onLaunchWaiting }) => {
         }).then((data) => {
             let stagesTemp = []
             data.map((stage, id) => {
-                //! using id directly instead of stage.id make the selection working but
-                //! this is unconsistance and not clean at all... (issue in Dynamic List)
                 stagesTemp.push({
                     id: id,
                     title: stage.name,
@@ -266,10 +263,6 @@ const ExplorationLayer = ({ onLaunchWaiting }) => {
      */
     return(
         <div className="my-6">
-
-            {
-                console.log('stages: ' + JSON.stringify(stages) + ' selected Stages: ' + JSON.stringify(selectedStages))
-            }
 
             <Helmet>
                 <html lang="en" />
@@ -354,6 +347,7 @@ const ExplorationLayer = ({ onLaunchWaiting }) => {
                         Launch visualization
                     </button>
                 </div>
+
             </div>
 
         </div>
