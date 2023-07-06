@@ -16,14 +16,14 @@ import NotFound from './pages/not-found';
 function App() {
   return (
     <div>
-      <BrowserRouter>
+      <BrowserRouter basename="/app">
         <Navbar/>
         <div className='mt-12 w-full'>
           <Routes>
-            <Route path="/" element={<LandingPage/>} />
-            <Route path="upload" element={<Uploader />} />
-            <Route path="explore" element={<VisualLauncher layerId={0}/>} />
-            <Route path="compare" element={<VisualLauncher layerId={1}/>} />
+            <Route exact path="" element={<LandingPage/>} />
+            <Route path="/upload" element={<Uploader />} />
+            <Route path="/explore" element={<VisualLauncher layerId={0}/>} />
+            <Route path="/compare" element={<VisualLauncher layerId={1}/>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

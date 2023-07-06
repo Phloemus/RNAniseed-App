@@ -2,7 +2,6 @@
 /************** Notice **************** /
  * 
  * Author: Brieuc Quemeneur
- * Copyrights: gingembre.org
  * 
  */
 
