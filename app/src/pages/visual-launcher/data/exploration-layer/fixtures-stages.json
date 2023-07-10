@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "title": "Stage 1 (2 cells)",
+        "description": "Development stage 1 corresponding to embryos having 2 cells"
+    },
+    {
+        "id": 2,
+        "title": "Stage 2 (4 cells)",
+        "description": "Development stage 2 corresponding to embryos having 4 cells"
+    },
+    {
+        "id": 3,
+        "title": "Stage 3 (8 cells)",
+        "description": "Development stage 3 corresponding to embryos having 8 cells"
+    },
+    {
+        "id": 3,
+        "title": "Stage 4 (16 cells)",
+        "description": "Development stage 4 corresponding to embryos having 16 cells"
+    }
+]
