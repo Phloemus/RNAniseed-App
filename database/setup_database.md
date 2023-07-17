@@ -68,5 +68,4 @@ about the project and how the installation process work on a new server
 
 ## Authors
 
-Brieuc Quemeneur 
-
+Brieuc Quemeneur
