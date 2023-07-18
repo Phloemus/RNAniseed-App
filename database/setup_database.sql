@@ -1,24 +1,29 @@
--- create_database.sql
+-- setup_database.sql
 
--- Description: SQL query creating a brand new database for the single cell RNA seq project
---              create the database and a user associated with it. A random password is also
---		created to access the newly created user role
---		Database contain tables as defined in the project documentation
+-- Description: This plsql script prepare the database before being used. 
+-- 		Use this script in the postgres console after having created 
+--		a blank database. Be sure to be connected on this blank database
+-- 		before running this script.
+--		This script will create routine functions that can be used directly
+-- 		in the postgres console, as well as creating all the tables and
+-- 		constraints on the public schema needed for the project as 
+-- 		documented in the project database documentation.
+--		This script is only meant to be run once. It stores function in the
+-- 		database that will help you managing the database and adding 
+--		schemas
 
 -- Creation date: 17 july 2023
+-- Last update: 18 july 2023
 -- Author: Brieuc Quemeneur
 
--- Create the new database
---BEGIN
---	SELECT * FROM information_schema.tables
---	WHERE table_schema = 'public';
---	IF NOT FOUND THEN
---   		CREATE DATABASE cellxgene_db OWNER cellxgene;
---	END IF;
---END;
 
--- Create one of the many schema to create (a schema by specie is planned. Only a  
--- mammilata schema is currently created and used)
+---------------------- Routine functions ------------------------------------------------------
+
+------- build_new_schema -------
+--
+-- Create a function allowing to add custom schemas to the database by creating all the tables
+-- and constrains defined in the project documentation about the database
+--
 CREATE OR REPLACE FUNCTION build_new_schema(schema_name varchar(32)) RETURNS void AS $body$
 DECLARE
 	link_expression_to_cell INT;
@@ -122,3 +127,12 @@ BEGIN
 	RETURN;
 
 END $body$ language plpgsql;
+
+
+---------------------- Execution block ------------------------------------------------------
+
+DO $$
+DECLARE
+BEGIN
+	EXECUTE build_new_schema('public');
+END $$;
