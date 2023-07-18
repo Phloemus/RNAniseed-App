@@ -61,63 +61,63 @@ BEGIN
 
 	-- Addition of comments on the tables
 	EXECUTE format('COMMENT ON TABLE %I.gene
-    		IS "Represent a gene independantly from any gene models"', schema_name);
+    		IS ''Represent a gene independantly from any gene models''', schema_name);
 
 	EXECUTE format('COMMENT ON TABLE %I.cell
-    		IS "Represent a cell in which its transcriptome has been sequenced. A cell here is considered as a group of expression levels"', schema_name);
+    		IS ''Represent a cell in which its transcriptome has been sequenced. A cell here is considered as a group of expression levels''', schema_name);
 
-	EXECUTE fromat('COMMENT ON TABLE %I.expression
-    		IS "Represent the expression level of every genes for each cells"', schema_name);
+	EXECUTE format('COMMENT ON TABLE %I.expression
+    		IS ''Represent the expression level of every genes for each cells''', schema_name);
 
 	EXECUTE format('COMMENT ON TABLE %I.embryo
-    		IS "Represents a group of cells. Embryos may have any number of cells but at least 2"', schema_name);
+    		IS ''Represents a group of cells. Embryos may have any number of cells but at least 2''', schema_name);
 
 	-- Store the existance of each constrains used within the database
 	EXECUTE format('SELECT 1 FROM pg_constraint
         	WHERE conname = ''link_expression_to_cell''
-                AND conrelid = %I''.expression''::regclass', schema_name)
+                AND conrelid = ''%I.expression''::regclass', schema_name)
 	INTO link_expression_to_cell;
 
 	EXECUTE format('SELECT 1 FROM pg_constraint
                 WHERE conname = ''link_expression_to_gene''
-                AND conrelid = %I''.expression''::regclass', schema_name)
+                AND conrelid = ''%I.expression''::regclass', schema_name)
 	INTO link_expression_to_gene;
 
 	EXECUTE format('SELECT 1 FROM pg_constraint
                         WHERE conname = ''link_cell_to_embryo''
-                        AND conrelid = %I''.cell''::regclass', schema_name)
+                        AND conrelid = ''%I.cell''::regclass', schema_name)
 	INTO link_cell_to_embryo;
 
 
 	-- Create the links between the tables by adding constraints if they aren't binded to the tables yet
 	IF link_expression_to_cell IS NULL THEN
+		RAISE NOTICE 'Contraint link_expression_to_cell inexistant. Constraint added';
     		EXECUTE format('ALTER TABLE %I.expression ADD CONSTRAINT link_expression_to_cell
 			FOREIGN KEY(fk_cell_id)
 			REFERENCES %I.cell(id)', schema_name, schema_name);
   	END IF;
 
 	IF link_expression_to_gene IS NULL THEN
+		RAISE NOTICE 'Contraint link_expression_to_gene inexistant. Constraint added';
 		EXECUTE format('ALTER TABLE %I.expression ADD CONSTRAINT link_expression_to_gene
 			FOREIGN KEY(fk_gene_id)
 			REFERENCES %I.gene(id)', schema_name, schema_name);
 	END IF;
 
 	IF link_cell_to_embryo IS NULL THEN
+		RAISE NOTICE 'Contraint link_cell_to_embryo inexistant. Constraint added';
 		EXECUTE format('ALTER TABLE %I.cell ADD CONSTRAINT link_cell_to_embryo
 			FOREIGN KEY(fk_embryo_id)
-			REFERENCES %I.embryo(id), schema_name, schema_name);
+			REFERENCES %I.embryo(id)', schema_name, schema_name);
 	END IF;
 
 
 	-- Addition of comments on the table constraints
-	EXECUTE format('COMMENT ON CONSTRAINT link_expression_to_cell ON %I.expression
-    		IS "Constraint linking the expression level to a cell"', schema_name);
+	EXECUTE format('COMMENT ON CONSTRAINT link_expression_to_cell ON %I.expression IS ''Constraint linking the expression level to a cell''', schema_name);
 
-	EXECUTE format('COMMENT ON CONSTRAINT link_expression_to_gene ON %I.expression
-    		IS 'Constraint linking the expression level to a gene"', schema_name);
+        EXECUTE format('COMMENT ON CONSTRAINT link_expression_to_gene ON %I.expression IS ''Constraint linking the expression level to a gene''', schema_name);
 
-	EXECUTE format('COMMENT ON CONSTRAINT link_cell_to_embryo ON %I.cell
-    		IS "Constraint linking the cell with its origin embryo"', schema_name);
+        EXECUTE format('COMMENT ON CONSTRAINT link_cell_to_embryo ON %I.cell IS ''Constraint linking the cell with its origin embryo''', schema_name);
 
 	RETURN;
 
