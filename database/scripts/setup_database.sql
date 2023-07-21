@@ -13,7 +13,7 @@
 --		schemas
 
 -- Creation date: 17 july 2023
--- Last update: 18 july 2023
+-- Last update: 20 july 2023
 -- Author: Brieuc Quemeneur
 
 
@@ -29,6 +29,10 @@ DECLARE
 	link_expression_to_cell INT;
 	link_expression_to_gene INT;
 	link_cell_to_embryo INT;
+	link_gene_go_biological_process_to_gene INT;
+	link_gene_go_biological_process_to_go_biological_process INT;
+	link_gene_go_molecular_function_to_gene INT;
+	link_gene_go_molecular_function_to_go_molecular_function INT;
 BEGIN
 
 	-- Create the shema wanted by the user using the 
@@ -38,11 +42,9 @@ BEGIN
 	-- Create the tables of the database
 	EXECUTE format('CREATE TABLE IF NOT EXISTS %I.gene (
 		id SERIAL PRIMARY KEY,
-		unique_gene_id VARCHAR(9) NOT NULL,
+		unique_gene_id TEXT NOT NULL,
 		aniseed_id VARCHAR(30) NOT NULL,
 		ena_id VARCHAR(30),
-		go_biological_process_id VARCHAR(11),
-		go_molecular_function_id VARCHAR(11),
 		is_characterized NUMERIC(1)
 	)', schema_name);
 
@@ -64,6 +66,32 @@ BEGIN
 		is_wild_type NUMERIC(1)
 	)', schema_name);
 
+	EXECUTE format('CREATE TABLE IF NOT EXISTS %I.gene_go_biological_process (
+		id SERIAL PRIMARY KEY,
+		fk_gene_id INT NOT NULL,
+		fk_go_biological_process_id INT NOT NULL
+	)', schema_name);
+
+	EXECUTE format('CREATE TABLE IF NOT EXISTS %I.go_biological_process (
+		id SERIAL PRIMARY KEY,
+		go_id VARCHAR(11),
+		name TEXT,
+		definition TEXT
+	)', schema_name);
+
+	EXECUTE format('CREATE TABLE IF NOT EXISTS %I.gene_go_molecular_function (
+                id SERIAL PRIMARY KEY,
+                fk_gene_id INT NOT NULL,
+                fk_go_molecular_function_id INT NOT NULL
+        )', schema_name);
+
+        EXECUTE format('CREATE TABLE IF NOT EXISTS %I.go_molecular_function (
+                id SERIAL PRIMARY KEY,
+                go_id VARCHAR(11),
+                name TEXT,
+                definition TEXT
+        )', schema_name);
+
 	-- Addition of comments on the tables
 	EXECUTE format('COMMENT ON TABLE %I.gene
     		IS ''Represent a gene independantly from any gene models''', schema_name);
@@ -76,6 +104,18 @@ BEGIN
 
 	EXECUTE format('COMMENT ON TABLE %I.embryo
     		IS ''Represents a group of cells. Embryos may have any number of cells but at least 2''', schema_name);
+
+	EXECUTE format('COMMENT ON TABLE %I.gene_go_biological_process
+		IS ''Correspond to the intermediate tables on ensure a many to many relationship between gene and go_biological_process tables''', schema_name);
+
+	EXECUTE format('COMMENT ON TABLE %I.go_biological_process
+		IS ''Represents the list of the biological process terms from the gene ontology''', schema_name);
+
+	EXECUTE format('COMMENT ON TABLE %I.gene_go_molecular_function
+                IS ''Correspond to the intermediate tables on ensure a many to many relationship between gene and go_molecular_function tables''', schema_name);
+
+        EXECUTE format('COMMENT ON TABLE %I.go_molecular_function
+                IS ''Represents the list of the molecular function terms from the gene ontology''', schema_name);
 
 	-- Store the existance of each constrains used within the database
 	EXECUTE format('SELECT 1 FROM pg_constraint
@@ -93,6 +133,25 @@ BEGIN
                         AND conrelid = ''%I.cell''::regclass', schema_name)
 	INTO link_cell_to_embryo;
 
+	EXECUTE format('SELECT 1 FROM pg_constraint
+		WHERE conname = ''link_gene_go_biological_process_to_gene''
+		AND conrelid = ''%I.gene_go_biological_process''::regclass', schema_name)
+	INTO link_gene_go_biological_process_to_gene;
+
+	EXECUTE format('SELECT 1 FROM pg_constraint
+		WHERE conname = ''link_gene_go_biological_process_to_go_biological_process''
+		AND conrelid = ''%I.gene_go_biological_process''::regclass', schema_name)
+	INTO link_gene_go_biological_process_to_go_biological_process;
+
+	EXECUTE format('SELECT 1 FROM pg_constraint
+                WHERE conname = ''link_gene_go_molecular_function_to_gene''
+                AND conrelid = ''%I.gene_go_molecular_function''::regclass', schema_name)
+        INTO link_gene_go_molecular_function_to_gene;
+
+        EXECUTE format('SELECT 1 FROM pg_constraint
+                WHERE conname = ''link_gene_go_molecular_function_to_go_molecular_function''
+                AND conrelid = ''%I.gene_go_molecular_function''::regclass', schema_name)
+        INTO link_gene_go_molecular_function_to_go_molecular_function;
 
 	-- Create the links between the tables by adding constraints if they aren't binded to the tables yet
 	IF link_expression_to_cell IS NULL THEN
@@ -116,6 +175,34 @@ BEGIN
 			REFERENCES %I.embryo(id)', schema_name, schema_name);
 	END IF;
 
+	IF link_gene_go_biological_process_to_gene IS NULL THEN
+		RAISE NOTICE 'Constraint link_gene_go_biological_process_to_gene inexistant. Constraint added';
+		EXECUTE format('ALTER TABLE %I.gene_go_biological_process ADD CONSTRAINT link_gene_go_biological_process_to_gene
+			FOREIGN KEY(fk_gene_id)
+			REFERENCES %I.gene(id)', schema_name, schema_name);
+	END IF;
+
+	IF link_gene_go_biological_process_to_go_biological_process IS NULL THEN
+                RAISE NOTICE 'Constraint link_gene_go_biological_process_to_gene inexistant. Constraint added';
+                EXECUTE format('ALTER TABLE %I.gene_go_biological_process ADD CONSTRAINT link_gene_go_biological_process_to_go_biological_process
+                        FOREIGN KEY(fk_go_biological_process_id)
+                        REFERENCES %I.go_biological_process(id)', schema_name, schema_name);
+        END IF;
+
+	IF link_gene_go_molecular_function_to_gene IS NULL THEN
+                RAISE NOTICE 'Constraint link_gene_go_molecular_function_to_gene inexistant. Constraint added';
+                EXECUTE format('ALTER TABLE %I.gene_go_molecular_function ADD CONSTRAINT link_gene_go_molecular_function_to_gene
+                        FOREIGN KEY(fk_gene_id)
+                        REFERENCES %I.gene(id)', schema_name, schema_name);
+        END IF;
+
+        IF link_gene_go_molecular_function_to_go_molecular_function IS NULL THEN
+                RAISE NOTICE 'Constraint link_gene_go_biological_process_to_gene inexistant. Constraint added';
+                EXECUTE format('ALTER TABLE %I.gene_go_molecular_function ADD CONSTRAINT link_gene_go_molecular_function_to_go_molecular_function
+                        FOREIGN KEY(fk_go_molecular_function_id)
+                        REFERENCES %I.go_molecular_function(id)', schema_name, schema_name);
+        END IF;
+
 
 	-- Addition of comments on the table constraints
 	EXECUTE format('COMMENT ON CONSTRAINT link_expression_to_cell ON %I.expression IS ''Constraint linking the expression level to a cell''', schema_name);
@@ -123,6 +210,16 @@ BEGIN
         EXECUTE format('COMMENT ON CONSTRAINT link_expression_to_gene ON %I.expression IS ''Constraint linking the expression level to a gene''', schema_name);
 
         EXECUTE format('COMMENT ON CONSTRAINT link_cell_to_embryo ON %I.cell IS ''Constraint linking the cell with its origin embryo''', schema_name);
+
+	EXECUTE format('COMMENT ON CONSTRAINT link_gene_go_biological_process_to_gene ON %I.gene_go_biological_process IS ''Contraint linking the gene_go_biological_process to the gene''', schema_name);
+
+	EXECUTE format('COMMENT ON CONSTRAINT link_gene_go_biological_process_to_go_biological_process ON %I.gene_go_biological_process IS ''Contraint linking the gene_go_biological_process to the go biological process''', schema_name);
+
+
+	EXECUTE format('COMMENT ON CONSTRAINT link_gene_go_molecular_function_to_gene ON %I.gene_go_molecular_function IS ''Contraint linking the gene_go_molecular_function to the gene''', schema_name);
+
+        EXECUTE format('COMMENT ON CONSTRAINT link_gene_go_molecular_function_to_go_molecular_function ON %I.gene_go_molecular_function IS ''Contraint linking the gene_go_molecular_function to the go_molecular_function''', schema_name);
+
 
 	RETURN;
 
