@@ -104,7 +104,7 @@ def createFillGoSqlQuery(termList, goNamespace, schemaName = 'public'):
                            f"VALUES ('{go_id}', '{name}', '{definition}');\n"
             sql_file.write(insert_query)
 
-
+##! Doesn't work. Need to manage the case of the many to many relationships between genes and models
 def createGeneFillQueries(schemaName = 'public'):
     matdata = sio.loadmat('../ressources/Neuveu_data.mat')
     out = open("fill_gene_table.sql", "w")
@@ -122,7 +122,7 @@ def createGeneFillQueries(schemaName = 'public'):
             organism = str(allCaracteristics[1] + ' ' + allCaracteristics[2])
             geneName = (allCaracteristics[len(allCaracteristics)-2]).replace("(", "")
 
-            
+
             
             out.write(f"INSERT INTO {schemaName}.gene (unique_gene_id, aniseed_id, ena_id, is_characterized) VALUES ('{}', '{}', '{enaId}', '{isCharacterized}');\n")
             bar()

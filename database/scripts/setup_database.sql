@@ -12,8 +12,8 @@
 -- 		database that will help you managing the database and adding 
 --		schemas
 
--- Creation date: 17 july 2023
--- Last update: 20 july 2023
+-- Creation date: 17th july 2023
+-- Last update: 21st july 2023
 -- Author: Brieuc Quemeneur
 
 
@@ -26,6 +26,8 @@
 --
 CREATE OR REPLACE FUNCTION build_new_schema(schema_name varchar(32)) RETURNS void AS $body$
 DECLARE
+	link_gene_model_to_gene INT;
+	link_gene_model_to_model INT;
 	link_expression_to_cell INT;
 	link_expression_to_gene INT;
 	link_cell_to_embryo INT;
@@ -43,10 +45,24 @@ BEGIN
 	EXECUTE format('CREATE TABLE IF NOT EXISTS %I.gene (
 		id SERIAL PRIMARY KEY,
 		unique_gene_id TEXT NOT NULL,
-		aniseed_id VARCHAR(30) NOT NULL,
 		ena_id VARCHAR(30),
 		is_characterized NUMERIC(1)
 	)', schema_name);
+
+	EXECUTE format('CREATE TABLE IF NOT EXISTS %I.model (
+                id SERIAL PRIMARY KEY,
+                unique_model_id TEXT NOT NULL,
+                pos_start INT,
+		pos_end INT,
+                strand NUMERIC(1),
+		annotation TEXT
+        )', schema_name);
+
+	EXECUTE format('CREATE TABLE IF NOT EXISTS %I.gene_model (
+                id SERIAL PRIMARY KEY,
+                fk_gene_id INT NOT NULL,
+		fk_model_id INT NOT NULL
+        )', schema_name);
 
 	EXECUTE format('CREATE TABLE IF NOT EXISTS %I.cell (
 		id SERIAL PRIMARY KEY,
@@ -94,7 +110,13 @@ BEGIN
 
 	-- Addition of comments on the tables
 	EXECUTE format('COMMENT ON TABLE %I.gene
-    		IS ''Represent a gene independantly from any gene models''', schema_name);
+    		IS ''Represent a gene''', schema_name);
+
+	EXECUTE format('COMMENT ON TABLE %I.model
+                IS ''Represent a gene model predicted''', schema_name);
+
+	EXECUTE format('COMMENT ON TABLE %I.gene_model
+                IS ''Correspond to the intermediate table to ensure many to many relationship between the genes and their models''', schema_name);
 
 	EXECUTE format('COMMENT ON TABLE %I.cell
     		IS ''Represent a cell in which its transcriptome has been sequenced. A cell here is considered as a group of expression levels''', schema_name);
@@ -118,6 +140,16 @@ BEGIN
                 IS ''Represents the list of the molecular function terms from the gene ontology''', schema_name);
 
 	-- Store the existance of each constrains used within the database
+	EXECUTE format('SELECT 1 FROM pg_constraint
+                WHERE conname = ''link_gene_model_to_gene''
+                AND conrelid = ''%I.gene_model''::regclass', schema_name)
+        INTO link_gene_model_to_gene;
+
+	EXECUTE format('SELECT 1 FROM pg_constraint
+                WHERE conname = ''link_gene_model_to_model''
+                AND conrelid = ''%I.gene_model''::regclass', schema_name)
+        INTO link_gene_model_to_gene;
+
 	EXECUTE format('SELECT 1 FROM pg_constraint
         	WHERE conname = ''link_expression_to_cell''
                 AND conrelid = ''%I.expression''::regclass', schema_name)
@@ -154,6 +186,20 @@ BEGIN
         INTO link_gene_go_molecular_function_to_go_molecular_function;
 
 	-- Create the links between the tables by adding constraints if they aren't binded to the tables yet
+	IF link_gene_model_to_gene IS NULL THEN
+                RAISE NOTICE 'Contraint link_gene_model_to_gene inexistant. Constraint added';
+                EXECUTE format('ALTER TABLE %I.gene_model ADD CONSTRAINT link_gene_model_to_gene
+                        FOREIGN KEY(fk_gene_id)
+                        REFERENCES %I.gene(id)', schema_name, schema_name);
+        END IF;
+
+	IF link_gene_model_to_model IS NULL THEN
+                RAISE NOTICE 'Contraint link_gene_model_to_model inexistant. Constraint added';
+                EXECUTE format('ALTER TABLE %I.gene_model ADD CONSTRAINT link_gene_model_to_model
+                        FOREIGN KEY(fk_model_id)
+                        REFERENCES %I.model(id)', schema_name, schema_name);
+        END IF;
+
 	IF link_expression_to_cell IS NULL THEN
 		RAISE NOTICE 'Contraint link_expression_to_cell inexistant. Constraint added';
     		EXECUTE format('ALTER TABLE %I.expression ADD CONSTRAINT link_expression_to_cell
@@ -205,6 +251,10 @@ BEGIN
 
 
 	-- Addition of comments on the table constraints
+	EXECUTE format('COMMENT ON CONSTRAINT link_gene_model_to_gene ON %I.gene_model IS ''Constraint linking the gene_model to a gene''', schema_name);
+
+	EXECUTE format('COMMENT ON CONSTRAINT link_gene_model_to_model ON %I.gene_model IS ''Constraint linking the gene_model to a model''', schema_name);
+
 	EXECUTE format('COMMENT ON CONSTRAINT link_expression_to_cell ON %I.expression IS ''Constraint linking the expression level to a cell''', schema_name);
 
         EXECUTE format('COMMENT ON CONSTRAINT link_expression_to_gene ON %I.expression IS ''Constraint linking the expression level to a gene''', schema_name);
@@ -214,7 +264,6 @@ BEGIN
 	EXECUTE format('COMMENT ON CONSTRAINT link_gene_go_biological_process_to_gene ON %I.gene_go_biological_process IS ''Contraint linking the gene_go_biological_process to the gene''', schema_name);
 
 	EXECUTE format('COMMENT ON CONSTRAINT link_gene_go_biological_process_to_go_biological_process ON %I.gene_go_biological_process IS ''Contraint linking the gene_go_biological_process to the go biological process''', schema_name);
-
 
 	EXECUTE format('COMMENT ON CONSTRAINT link_gene_go_molecular_function_to_gene ON %I.gene_go_molecular_function IS ''Contraint linking the gene_go_molecular_function to the gene''', schema_name);
 
