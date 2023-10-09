@@ -67,3 +67,15 @@ The main code of the app is the **/src** folder
                 page component is here to bundle the layers logic into a single component.
                 Every page have a specific URL except for very close pages that can't share
                 the same URL. But in general : 1 URL = 1 page.
+   
+## Principle of the application
+
+Everytime a user indicated informations such as the specie he wants to investigate of the developpment 
+stage he wants to see in the visualisation, a request is made to the API in order to fill in the form 
+with relevant informations. This makes the selection of the criterias to investigate on progressive and 
+interactive.
+
+## Codebase
+
+The code is heavily documented. Each components has some details about its responsability. Check the 
+[ReactJS documentation](https://react.dev/) to understand how the framework works before getting into the code.
