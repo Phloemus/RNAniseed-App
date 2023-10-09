@@ -36,7 +36,7 @@ In the virutal environment, two variables needs to be exported:
 - the cellxgene path
 - the path to the directory containing the h5ad files
 
-````bash
+```bash
 export CELLXGENE_DATA=../cellxgene_data  # change this directory if you put data in a different place.
 export CELLXGENE_LOCATION=`which cellxgene
 ```
