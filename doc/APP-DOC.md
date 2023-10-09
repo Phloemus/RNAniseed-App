@@ -54,17 +54,16 @@ The main code of the app is the **/src** folder
 1. **/api** : contains the endpoints used to communicate with the RNAniseed API. All the 
               endpoints are located there making the deployment to live server easier by 
               simply changing the **LOCAL_API** variable to the **PROD_API** before building
-              the App using the React routines (see more on deployment manual)
+              the App using the React routines
 
 2. **/components** : contains some components that can be reused at multiple parts of the 
                      project. A component in this folder should not be modified often. 
                      Creating and updating a component within this folder impacts many 
                      pages and specific components in the entire app so there is many 
-                     rules to follow to prevent bugs and exceptions (see the global 
-                     component manifest for more details)
+                     rules to follow to prevent bugs and exceptions
 
 3. **/pages** : contains components that represent an entire page. A page component can 
                 can be composed of multiple layers containing specific logic but the 
                 page component is here to bundle the layers logic into a single component.
                 Every page have a specific URL except for very close pages that can't share
-                the same URL. But in general : 1 URL = 1 page. (see page creation manual)
+                the same URL. But in general : 1 URL = 1 page.
