@@ -68,6 +68,3 @@ psql -h localhost -U {username} {dbname}
 
 If you can connect to it and find all the tables present in the database structure
 provided in the documentation, the database seems to have been created properly
-
-
-## Structure of the database
